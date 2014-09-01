@@ -22,7 +22,7 @@ import com.props.*;
 public class Person { 
 
     public final IProperty<Integer> id = new Property<Integer>();
-    public final IPropertyGetter<Integer> id = _id;
+    public final IProperty<String> firstName = new Property<String>();
 }
 ```
 
