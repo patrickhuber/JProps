@@ -46,6 +46,8 @@ public class Person
 
 Java Equivalent Person Class
 ```Java
+import com.props.*;
+
 public class Person {
     
     private IProperty<Integer> _id = new Property<Integer>();
@@ -61,10 +63,41 @@ public class Person {
 ```
 
 ### Write Only Property Declaration 
-#### (Aka, don't shoot yourself in the foot)
+(If you find a good reason for this, please let me know)
 
+C# User Class
 ```CSharp
+public class User
+{
+    private int _id;
+    private string _secret;
+    
+    public User(int id, string secret)
+    {
+        _id = id;
+        _secret = secret;
+    }
+    
+    public int Id { get { return _id; } }
+    public string Secret { set { _secret = value; } }
+}
 ```
 
+Java equivalent User Class
 ```Java
+import com.props.*;
+
+public class User {
+	
+	private final IProperty<Integer> _id = new Property<Integer>();
+	private final IProperty<String> _secret = new Property<String>();
+	
+	public User(Integer id, String secret){
+		_id.set(id);
+		_secret.set(secret);
+	}
+	
+	public final IPropertySetter<String> secret = _secret;
+	public final IPropertyGetter<Integer> id = _id;
+}
 ```
