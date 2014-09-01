@@ -13,7 +13,6 @@ public class Person
     public int Id{get;set;}
     public string FirstName{get;set;}
 }
-
 ```
 
 Java Equivalent Person Class
@@ -28,10 +27,37 @@ public class Person {
 
 ### Read Only Property Declaration
 
+C# Person Class
 ```CSharp
+public class Person
+{
+    private int _id;
+    
+    public Person(int id)
+    {
+        _id = id;
+    }
+    
+    public int Id { get { return _id; } }
+    
+    public string FirstName { get; set; }
+}
 ```
 
+Java Equivalent Person Class
 ```Java
+public class Person {
+    
+    private IProperty<Integer> _id = new Property<Integer>();
+    
+    public Person(int id){
+        _id.set(id);
+    }
+    
+    public IPropertyGetter<Integer> id = _id;
+    
+    public IProperty<String> firstName = new Property<String>();
+}
 ```
 
 ### Write Only Property Declaration 
